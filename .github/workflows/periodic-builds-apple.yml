@@ -10,7 +10,7 @@ jobs:
     runs-on: macos-14
     strategy:
       matrix:
-        xcode: [ '15.4', '16.0' ]
+        xcode: [ '15.3', '15.4' ]
         branches: [ 'main', 'development' ]
     defaults:
       run:
@@ -31,12 +31,12 @@ jobs:
       - name: print ffbuild logs
         if: ${{ failure() }}
         run: '[[ -f ./src/ffmpeg/ffbuild/config.log ]] && tail -50 ./src/ffmpeg/ffbuild/config.log'
-  build-ios-lts-on-macos-monterey:
-    name: ios lts on monterey
-    runs-on: macos-12
+  build-ios-min-sdk-10-on-macos-ventura:
+    name: ios min sdk 10 on ventura
+    runs-on: macos-13
     strategy:
       matrix:
-        xcode: [ '13.4.1' ]
+        xcode: [ '15.2' ]
         branches: [ 'main', 'development' ]
     defaults:
       run:
@@ -50,7 +50,7 @@ jobs:
       - name: set up xcode
         run: echo "export DEVELOPER_DIR=/Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer" > ~/.xcode.for.ffmpeg.kit.sh
       - name: run the build script
-        run: PATH="/usr/local/opt/bison/bin:$PATH" XML_CATALOG_FILES="/usr/local/etc/xml/catalog" ./ios.sh -l --full --enable-gpl --disable-lib-srt --disable-lib-gnutls --disable-armv7s --disable-arm64e --disable-i386
+        run: PATH="/usr/local/opt/bison/bin:$PATH" XML_CATALOG_FILES="/usr/local/etc/xml/catalog" ./ios.sh --target=10 --full --enable-gpl --disable-lib-srt --disable-lib-gnutls --disable-armv7s --disable-arm64e --disable-i386
       - name: print build logs
         if: ${{ always() }}
         run: cat build.log
@@ -62,7 +62,7 @@ jobs:
     runs-on: macos-14
     strategy:
       matrix:
-        xcode: [ '15.4', '16.0' ]
+        xcode: [ '15.3', '15.4' ]
         branches: [ 'main', 'development' ]
     defaults:
       run:
@@ -83,12 +83,12 @@ jobs:
       - name: print ffbuild logs
         if: ${{ failure() }}
         run: '[[ -f ./src/ffmpeg/ffbuild/config.log ]] && tail -50 ./src/ffmpeg/ffbuild/config.log'
-  build-macos-lts-on-macos-monterey:
-    name: macos lts on monterey
-    runs-on: macos-12
+  build-macos-min-sdk-1012-on-macos-ventura:
+    name: macos min sdk 10.12 on ventura
+    runs-on: macos-13
     strategy:
       matrix:
-        xcode: [ '13.4.1' ]
+        xcode: [ '15.2' ]
         branches: [ 'main', 'development' ]
     defaults:
       run:
@@ -102,7 +102,7 @@ jobs:
       - name: set up xcode
         run: echo "export DEVELOPER_DIR=/Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer" > ~/.xcode.for.ffmpeg.kit.sh
       - name: run the build script
-        run: PATH="/usr/local/opt/bison/bin:$PATH" XML_CATALOG_FILES="/usr/local/etc/xml/catalog" ./macos.sh -l --full --enable-gpl --disable-lib-srt --disable-lib-gnutls
+        run: PATH="/usr/local/opt/bison/bin:$PATH" XML_CATALOG_FILES="/usr/local/etc/xml/catalog" ./macos.sh --target=10.12 --full --enable-gpl --disable-lib-srt --disable-lib-gnutls
       - name: print build logs
         if: ${{ always() }}
         run: cat build.log
@@ -114,7 +114,7 @@ jobs:
     runs-on: macos-14
     strategy:
       matrix:
-        xcode: [ '15.4', '16.0' ]
+        xcode: [ '15.3', '15.4' ]
         branches: [ 'main', 'development' ]
     defaults:
       run:
@@ -135,12 +135,12 @@ jobs:
       - name: print ffbuild logs
         if: ${{ failure() }}
         run: '[[ -f ./src/ffmpeg/ffbuild/config.log ]] && tail -50 ./src/ffmpeg/ffbuild/config.log'
-  build-tvos-lts-on-macos-monterey:
-    name: tvos lts on monterey
-    runs-on: macos-12
+  build-tvos-min-sdk-100-on-macos-ventura:
+    name: tvos min sdk 10.0 on ventura
+    runs-on: macos-13
     strategy:
       matrix:
-        xcode: [ '13.4.1' ]
+        xcode: [ '15.2' ]
         branches: [ 'main', 'development' ]
     defaults:
       run:
@@ -154,7 +154,7 @@ jobs:
       - name: set up xcode
         run: echo "export DEVELOPER_DIR=/Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer" > ~/.xcode.for.ffmpeg.kit.sh
       - name: run the build script
-        run: PATH="/usr/local/opt/bison/bin:$PATH" XML_CATALOG_FILES="/usr/local/etc/xml/catalog" ./tvos.sh -l --full --enable-gpl --disable-lib-srt --disable-lib-gnutls
+        run: PATH="/usr/local/opt/bison/bin:$PATH" XML_CATALOG_FILES="/usr/local/etc/xml/catalog" ./tvos.sh --target=10.0 --full --enable-gpl --disable-lib-srt --disable-lib-gnutls
       - name: print build logs
         if: ${{ always() }}
         run: cat build.log
