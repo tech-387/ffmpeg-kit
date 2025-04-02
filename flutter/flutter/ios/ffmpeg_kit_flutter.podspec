@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.requires_arc        = true
   s.static_framework    = true
 
-  s.source              = { :path => '.' }
+  s.source              = { :http => "https://github.com/apan1000/ffmpeg-kit/releases/download/v6.0/ffmpeg-kit-min-gpl-6.0-ios-xcframework.zip" }
   s.source_files        = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
 
@@ -37,7 +37,9 @@ Pod::Spec.new do |s|
   s.subspec 'min-gpl' do |ss|
     ss.source_files         = 'Classes/**/*'
     ss.public_header_files  = 'Classes/**/*.h'
-    ss.dependency 'ffmpeg-kit-ios-min-gpl', "6.0"
+    # ss.dependency 'ffmpeg-kit-ios-min-gpl', "6.0"
+    # ss.vendored_frameworks = 'ffmpegkit.xcframework'
+    ss.vendored_frameworks = 'ffmpegkit.xcframework', 'libavdevice.xcframework', 'libavcodec.xcframework', 'libavfilter.xcframework', 'libavformat.xcframework', 'libavutil.xcframework', 'libswresample.xcframework', 'libswscale.xcframework'
     ss.ios.deployment_target = '12.1'
   end
 
