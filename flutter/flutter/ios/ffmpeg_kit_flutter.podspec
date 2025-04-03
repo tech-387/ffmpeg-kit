@@ -37,7 +37,8 @@ Pod::Spec.new do |s|
   s.subspec 'min-gpl' do |ss|
     ss.source_files         = 'Classes/**/*'
     ss.public_header_files  = 'Classes/**/*.h'
-    ss.dependency 'ffmpeg-kit-ios-min-gpl', "6.0"
+    # ss.dependency 'ffmpeg-kit-ios-min-gpl', "6.0"
+    ss.vendored_frameworks = 'Frameworks/ffmpeg-kit-min-gpl-6/ffmpegkit.xcframework', 'Frameworks/ffmpeg-kit-min-gpl-6/libavdevice.xcframework', 'Frameworks/ffmpeg-kit-min-gpl-6/libavcodec.xcframework', 'Frameworks/ffmpeg-kit-min-gpl-6/libavfilter.xcframework', 'Frameworks/ffmpeg-kit-min-gpl-6/libavformat.xcframework', 'Frameworks/ffmpeg-kit-min-gpl-6/libavutil.xcframework', 'Frameworks/ffmpeg-kit-min-gpl-6/libswresample.xcframework', 'Frameworks/ffmpeg-kit-min-gpl-6/libswscale.xcframework'
     ss.ios.deployment_target = '12.1'
   end
 
