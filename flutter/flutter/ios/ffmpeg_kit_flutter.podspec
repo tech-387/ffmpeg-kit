@@ -43,8 +43,6 @@ Pod::Spec.new do |s|
     # ss.source               = { :http => "https://github.com/apan1000/ffmpeg-kit/releases/download/v6.0/ffmpeg-kit-min-gpl-6.0-ios-xcframework.zip" }
     # ss.vendored_frameworks  = 'ffmpegkit.xcframework', 'libavdevice.xcframework', 'libavcodec.xcframework', 'libavfilter.xcframework', 'libavformat.xcframework', 'libavutil.xcframework', 'libswresample.xcframework', 'libswscale.xcframework'
     ss.vendored_frameworks = 'Frameworks/ffmpeg-kit-min-gpl-6/ffmpegkit.xcframework', 'Frameworks/ffmpeg-kit-min-gpl-6/libavdevice.xcframework', 'Frameworks/ffmpeg-kit-min-gpl-6/libavcodec.xcframework', 'Frameworks/ffmpeg-kit-min-gpl-6/libavfilter.xcframework', 'Frameworks/ffmpeg-kit-min-gpl-6/libavformat.xcframework', 'Frameworks/ffmpeg-kit-min-gpl-6/libavutil.xcframework', 'Frameworks/ffmpeg-kit-min-gpl-6/libswresample.xcframework', 'Frameworks/ffmpeg-kit-min-gpl-6/libswscale.xcframework'
-    # GPT hallucination
-    # ss.vendored_headers = 'ffmpegkit.xcframework/**/*.h', 'libavdevice.xcframework/**/*.h', 'libavcodec.xcframework/**/*.h', 'libavfilter.xcframework/**/*.h', 'libavformat.xcframework/**/*.h', 'libavutil.xcframework/**/*.h', 'libswresample.xcframework/**/*.h', 'libswscale.xcframework/**/*.h'
     ss.ios.deployment_target = '12.1'
   end
 
